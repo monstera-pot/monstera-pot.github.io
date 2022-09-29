@@ -7,7 +7,7 @@ function setup() {
 }
 
 function draw() {
-  fill(random(255), random(255), random(255));
+  fill(random(255));
   circle(random(windowWidth), random(windowHeight), random(200));
   //background(220);
   //Image(img, mouseX, mouseY);
