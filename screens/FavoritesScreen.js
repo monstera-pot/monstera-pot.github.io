@@ -28,7 +28,7 @@ const FavoritesScreen = ({ navigation }) => {
 
   const renderFavoritePoem = ({ item: poem }) => {
     const displayFavorite = () => {
-      navigation.navigate("Favorito");
+      navigation.navigate("Favoritos");
     };
 
     return (

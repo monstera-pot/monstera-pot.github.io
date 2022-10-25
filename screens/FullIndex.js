@@ -13,6 +13,7 @@ import TitlePageDisplay from "../components/TitlePageDisplay";
 import PoemPageDisplay from "../components/PoemPageDisplay";
 import { titles } from "../shared/PoemsSlice";
 import { useRef, useState, useEffect } from "react";
+import FirstPage from "./FirstPageScreen";
 
 const FullIndex = ({ item }) => {
   const ref = useRef(null);
@@ -26,7 +27,9 @@ const FullIndex = ({ item }) => {
     });
   }, [index]);
   const renderItem = ({ item }) => {
-    if (item.page === 0) {
+    if (item.page === 1) {
+      //   return <FirstPage item={item} />;
+      // } else if (item.page === 1) {
       return (
         <View style={styles.FlatListContainer}>
           <Button
@@ -103,6 +106,7 @@ const FullIndex = ({ item }) => {
         ref={ref}
         initialNumToRender={12}
         initialScrollIndex={0}
+        showsHorizontalScrollIndicator
       />
     </View>
   );

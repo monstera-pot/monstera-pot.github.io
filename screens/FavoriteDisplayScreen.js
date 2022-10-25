@@ -1,7 +1,6 @@
 import PoemPageDisplay from "../components/PoemPageDisplay";
-import { Text } from "react-native-elements";
 
-const FavoriteDisplayScreen = (props) => {
+const FavoriteDisplayScreen = ({ item }) => {
   return <PoemPageDisplay item={item} />;
 };
 

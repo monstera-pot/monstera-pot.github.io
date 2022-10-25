@@ -8,6 +8,7 @@ import AboutScreen from "./screens/AboutScreen";
 import FavoritesScreen from "./screens/FavoritesScreen";
 import FullIndexScreen from "./screens/FullIndex";
 import FavoriteDisplayScreen from "./screens/FavoriteDisplayScreen";
+import IndexShelf from "./screens/IndexShelf";
 //imports for redux
 import { Provider } from "react-redux";
 import { favoritesReducer } from "./features/favorites/favoritesSlice";
@@ -49,6 +50,26 @@ const HomeNavigator = () => {
                 fontSize: 24,
               }}
               onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
+      />
+      <Stack.Screen
+        name="Microdosis"
+        component={FullIndexScreen}
+        screenOptions={screenOptions}
+        options={({ navigation }) => ({
+          title: "Microdosis",
+          headerLeft: () => (
+            <Icon
+              name="chevron-left"
+              type="font-awesome"
+              iconStyle={{
+                marginLeft: 10,
+                color: "#fff",
+                fontSize: 24,
+              }}
+              onPress={() => navigation.goBack()}
             />
           ),
         })}
@@ -155,6 +176,32 @@ const AboutScreenNavigator = () => {
   );
 };
 
+const IndexNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen
+        name="Índice"
+        component={IndexShelf}
+        options={({ navigation }) => ({
+          headerLeft: () => (
+            <Icon
+              name="chevron-left"
+              type="font-awesome"
+              iconStyle={{
+                marginLeft: 10,
+                color: "#fff",
+                fontSize: 24,
+              }}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
+      />
+    </Stack.Navigator>
+  );
+};
+
 export default function App() {
   const [fontsLoaded] = useFonts({
     "IBM-bold": require("./assets/fonts/IBMPlexMono-SemiBold.ttf"),
@@ -194,9 +241,14 @@ export default function App() {
               options={{ Title: "Home" }}
             />
             <Drawer.Screen
-              name="About"
-              component={AboutScreenNavigator}
-              options={{ title: "About me" }}
+              name="FullIndex"
+              component={FullIndexScreenNavigator}
+              options={{ title: "Microdosis" }}
+            />
+            <Drawer.Screen
+              name="IndexShelf"
+              component={IndexNavigator}
+              options={{ title: "Índice" }}
             />
             <Drawer.Screen
               name="Favorites"
@@ -204,9 +256,9 @@ export default function App() {
               options={{ title: "Favoritos" }}
             />
             <Drawer.Screen
-              name="FullIndex"
-              component={FullIndexScreenNavigator}
-              options={{ title: "Microdosis" }}
+              name="About"
+              component={AboutScreenNavigator}
+              options={{ title: "About me" }}
             />
           </Drawer.Navigator>
         </View>
