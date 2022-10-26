@@ -7,7 +7,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import AboutScreen from "./screens/AboutScreen";
 import FavoritesScreen from "./screens/FavoritesScreen";
 import FullIndexScreen from "./screens/FullIndex";
-import FavoriteDisplayScreen from "./screens/FavoriteDisplayScreen";
+import FavoriteCarrouselScreen from "./screens/FavoriteCarrouselScreen";
 import IndexShelf from "./screens/IndexShelf";
 //imports for redux
 import { Provider } from "react-redux";
@@ -17,6 +17,8 @@ import { store } from "./redux/store";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import { Icon } from "react-native-elements";
+import CarrouselScreen from "./screens/CarrouselScreen";
+import Carrousel from "./components/Carrousel";
 
 const Drawer = createDrawerNavigator();
 
@@ -128,10 +130,29 @@ const FavoritesScreenNavigator = () => {
           ),
         })}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Favorito"
-        component={FavoriteDisplayScreen}
+        component={FavoritesScreen}
         options={({ navigation }) => ({
+          headerLeft: () => (
+            <Icon
+              name="chevron-left"
+              type="font-awesome"
+              iconStyle={{
+                marginLeft: 10,
+                color: "#fff",
+                fontSize: 24,
+              }}
+              onPress={() => navigation.goBack()}
+            />
+          ),
+        })}
+      /> */}
+      <Stack.Screen
+        name="FavoriteCarrouselScreen"
+        component={FavoriteCarrouselScreen}
+        options={({ navigation }) => ({
+          title: "Favoritos",
           headerLeft: () => (
             <Icon
               name="chevron-left"
@@ -184,6 +205,33 @@ const IndexNavigator = () => {
         name="Índice"
         component={IndexShelf}
         options={({ navigation }) => ({
+          headerLeft: () => (
+            <Icon
+              name="chevron-left"
+              type="font-awesome"
+              iconStyle={{
+                marginLeft: 10,
+                color: "#fff",
+                fontSize: 24,
+              }}
+              onPress={() => navigation.toggleDrawer()}
+            />
+          ),
+        })}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const CarrouselScreenNavigator = () => {
+  const Stack = createStackNavigator();
+  return (
+    <Stack.Navigator initialRouteName="Carrousel" screenOptions={screenOptions}>
+      <Stack.Screen
+        name="Carrousel"
+        component={CarrouselScreen}
+        options={({ navigation }) => ({
+          title: "Carrousel",
           headerLeft: () => (
             <Icon
               name="chevron-left"
@@ -259,6 +307,11 @@ export default function App() {
               name="About"
               component={AboutScreenNavigator}
               options={{ title: "About me" }}
+            />
+            <Drawer.Screen
+              name="Carrousel"
+              component={CarrouselScreenNavigator}
+              options={{ title: "Carrousel" }}
             />
           </Drawer.Navigator>
         </View>

@@ -27,9 +27,9 @@ const FavoritesScreen = ({ navigation }) => {
   );
 
   const renderFavoritePoem = ({ item: poem }) => {
-    const displayFavorite = () => {
-      navigation.navigate("Favoritos");
-    };
+    // const displayFavorite = () => {
+    //   navigation.navigate("Favoritos");
+    // };
 
     return (
       <SwipeRow rightOpenValue={-100}>
@@ -61,11 +61,10 @@ const FavoritesScreen = ({ navigation }) => {
         <View>
           <ListItem
             onPress={() => {
-              navigation.navigate("Favorito", {
-                screen: "Favorito",
-                params: { poem },
+              navigation.navigate("FavoriteCarrouselScreen", {
+                //                screen: "Favorito",
+                poem: poem,
               });
-              console.log(poem);
             }}
           >
             <Avatar rounded source={poem.image} />
