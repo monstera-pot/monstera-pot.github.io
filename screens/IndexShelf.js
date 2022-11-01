@@ -1,7 +1,10 @@
 import { View, FlatList, StyleSheet, Dimensions, Text } from "react-native";
 import { Icon, Button } from "react-native-elements";
+import { useSelector } from "react-redux";
 
-const IndexShelf = () => {
+const IndexShelf = ({ route, navigation }) => {
+  const bookmarkedPage = useSelector((state) => state.bookmarkedPoem.ids);
+
   return (
     <View style={{ flex: 1, backgroundColor: "#fff" }}>
       <View style={styles.FlatListContainer}>
@@ -10,36 +13,44 @@ const IndexShelf = () => {
           type="outline"
           titleStyle={styles.buttonTitleStyle}
           title="Horas que"
-          // onPress={() => {
-          //   setIndex(1);
-          // }}
+          onPress={() => {
+            navigation.navigate("IndexedScreen", {
+              initialPage: 2,
+            });
+          }}
         />
         <Button
           buttonStyle={styles.buttonStyle}
           type="outline"
           titleStyle={styles.buttonTitleStyle}
           title="Círculos"
-          // onPress={() => {
-          //   setIndex(5);
-          // }}
+          onPress={() => {
+            navigation.navigate("IndexedScreen", {
+              initialPage: 6,
+            });
+          }}
         />
         <Button
           buttonStyle={styles.buttonStyle}
           type="outline"
           titleStyle={styles.buttonTitleStyle}
           title="Días que"
-          // onPress={() => {
-          //   setIndex(5);
-          // }}
+          onPress={() => {
+            navigation.navigate("IndexedScreen", {
+              initialPage: 9,
+            });
+          }}
         />
         <Button
           buttonStyle={styles.buttonStyle}
           type="outline"
           titleStyle={styles.buttonTitleStyle}
           title="Rombos"
-          // onPress={() => {
-          //   setIndex(11);
-          // }}
+          onPress={() => {
+            navigation.navigate("IndexedScreen", {
+              initialPage: 12,
+            });
+          }}
         />
         <Button
           buttonStyle={styles.buttonStyle}
@@ -52,10 +63,12 @@ const IndexShelf = () => {
             color: "#000",
             paddingHorizontal: 10,
           }}
-          // onPress={() => {
-          //   setIndex(bookmarkedPage);
-          // }}
-        ></Button>
+          onPress={() => {
+            navigation.navigate("Microdosis", {
+              index: bookmarkedPage,
+            });
+          }}
+        />
       </View>
     </View>
   );

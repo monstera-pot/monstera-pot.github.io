@@ -9,23 +9,29 @@ import {
 import { makeBookmark } from "../features/bookmark/bookmarksSlice";
 import CustomCard from "../UI/CustomCard";
 import * as Animatable from "react-native-animatable";
-import TitlePageDisplay from "../components/TitlePageDisplay";
-import PoemPageDisplay from "../components/PoemPageDisplay";
-import { titles } from "../shared/PoemsSlice";
+import PoemPageDisplay from "./PoemPageDisplay";
+import TitlePageDisplay from "./TitlePageDisplay";
+import PoemCardScreen from "../screens/PoemCardScreen";
+//import { titles } from "../shared/PoemsSlice";
 import { useRef, useState, useEffect } from "react";
-import FirstPage from "./FirstPageScreen";
+import FirstPage from "../screens/FirstPageScreen";
 
-const FullIndex = ({ item }) => {
+const NewFull = ({ initialPage }) => {
   const ref = useRef(null);
-  const [index, setIndex] = useState(0);
   const bookmarkedPage = useSelector((state) => state.bookmarkedPoem.ids);
+  const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
+  const [index, setIndex] = useState(initialPage);
+  console.log("index is" + index);
+
+  //When index changes: we get the Ref + scroll to certain index
   useEffect(() => {
     ref.current?.scrollToIndex({
       index,
       animated: false,
     });
   }, [index]);
+
   const renderItem = ({ item }) => {
     if (item.page === 1) {
       //   return <FirstPage item={item} />;
@@ -38,7 +44,7 @@ const FullIndex = ({ item }) => {
             titleStyle={styles.buttonTitleStyle}
             title="Horas que"
             onPress={() => {
-              setIndex(1);
+              setIndex(2);
             }}
           />
           <Button
@@ -47,7 +53,7 @@ const FullIndex = ({ item }) => {
             titleStyle={styles.buttonTitleStyle}
             title="Círculos"
             onPress={() => {
-              setIndex(5);
+              setIndex(6);
             }}
           />
           <Button
@@ -56,7 +62,7 @@ const FullIndex = ({ item }) => {
             titleStyle={styles.buttonTitleStyle}
             title="Días que"
             onPress={() => {
-              setIndex(5);
+              setIndex(9);
             }}
           />
           <Button
@@ -65,7 +71,7 @@ const FullIndex = ({ item }) => {
             titleStyle={styles.buttonTitleStyle}
             title="Rombos"
             onPress={() => {
-              setIndex(11);
+              setIndex(12);
             }}
           />
           <Button
@@ -105,8 +111,13 @@ const FullIndex = ({ item }) => {
         style={styles.FlatListContainer}
         ref={ref}
         initialNumToRender={12}
-        initialScrollIndex={0}
+        initialScrollIndex={index}
         showsHorizontalScrollIndicator
+        getItemLayout={(POEMS, index) => ({
+          length: windowWidth,
+          offset: windowWidth * index,
+          index,
+        })}
       />
     </View>
   );
@@ -169,15 +180,16 @@ const styles = StyleSheet.create({
     borderColor: "#000",
     borderWidth: 1,
     paddingVertical: 15,
+    margin: 5,
   },
   buttonTitleStyle: {
     color: "#000",
     fontFamily: "IBM-italic",
   },
-  indexButton: {
-    color: "#fff",
-    marginBottom: 0,
-  },
+  // indexButton: {
+  //   color: "#fff",
+  //   marginBottom: 0,
+  // },
 });
 
-export default FullIndex;
+export default NewFull;

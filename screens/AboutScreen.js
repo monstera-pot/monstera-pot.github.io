@@ -8,8 +8,8 @@ const AboutScreen = () => {
       <View style={style.textContainer}>
         <Text style={style.textName}>Hi, I'm Majo.</Text>
         <Text style={style.text}>
-          I recently got into web development and decided to build an app for my
-          latest book. Enjoy!
+          I'm a poet based in Berlin. This app is the latest edition of my book
+          of poems, a book that explores different media. Enjoy!
         </Text>
       </View>
       <View>

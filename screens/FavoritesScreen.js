@@ -62,7 +62,6 @@ const FavoritesScreen = ({ navigation }) => {
           <ListItem
             onPress={() => {
               navigation.navigate("FavoriteCarrouselScreen", {
-                //                screen: "Favorito",
                 poem: poem,
               });
             }}
@@ -89,7 +88,7 @@ const FavoritesScreen = ({ navigation }) => {
             animation="pulse"
             iterationCount="infinite"
             source={require("../assets/images/circle.png")}
-            accessibilityLabel="Outlined Rhombus"
+            accessibilityLabel="Outlined Circle"
             style={{
               height: 90,
               width: 90,

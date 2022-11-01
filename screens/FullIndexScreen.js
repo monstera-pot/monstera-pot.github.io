@@ -1,8 +1,8 @@
-import FullIndex from "./FullIndex";
 import { POEMS } from "../shared/POEMS";
+import NewFull from "../components/NewFull";
 
-const FullIndexScreen = ({ navigation }) => {
-  return <FullIndex poem={POEMS} />;
+const FullIndexScreen = ({ route, navigation }) => {
+  return <NewFull initialPage={0} />;
 };
 
 export default FullIndexScreen;
