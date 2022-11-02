@@ -18,17 +18,8 @@ export const POEMS = [
     idTitulo: 1,
     page: 2,
     image: require("../assets/images/clock1.png"),
+    imageWhite: require("../assets/images/clockWhite.png"),
   },
-  // {
-  //   titulo: "Horas que",
-  //   subtitulo: "14:05",
-  //   cuerpo: "Choquen esos cinco y no nos volvamos a ver",
-  //   id: 0,
-  //   image: require("../assets/images/clock1.png"),
-  //   featured: true,
-  //   esTitulo: false,
-  //   page: 1,
-  // },
   {
     titulo: "Horas que",
     subtitulo: "18:42",
@@ -63,6 +54,7 @@ export const POEMS = [
     idTitulo: 0,
     page: 6,
     image: require("../assets/images/circle.png"),
+    imageWhite: require("../assets/images/circleWhite.png"),
   },
   {
     titulo: "Círculos",
@@ -88,6 +80,7 @@ export const POEMS = [
     idTitulo: 3,
     page: 9,
     image: require("../assets/images/day.png"),
+    imageWhite: require("../assets/images/dayWhite.png"),
   },
   {
     titulo: "Días que",
@@ -113,6 +106,7 @@ export const POEMS = [
     idTitulo: 2,
     page: 12,
     image: require("../assets/images/rhombus.png"),
+    imageWhite: require("../assets/images/rhombusWhite.png"),
   },
 
   {

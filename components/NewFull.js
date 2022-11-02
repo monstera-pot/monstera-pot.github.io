@@ -15,6 +15,7 @@ import PoemCardScreen from "../screens/PoemCardScreen";
 //import { titles } from "../shared/PoemsSlice";
 import { useRef, useState, useEffect } from "react";
 import FirstPage from "../screens/FirstPageScreen";
+import IndexPage from "./IndexPage";
 
 const NewFull = ({ initialPage }) => {
   const ref = useRef(null);
@@ -22,7 +23,6 @@ const NewFull = ({ initialPage }) => {
   const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
   const [index, setIndex] = useState(initialPage);
-  console.log("index is" + index);
 
   //When index changes: we get the Ref + scroll to certain index
   useEffect(() => {
@@ -34,63 +34,7 @@ const NewFull = ({ initialPage }) => {
 
   const renderItem = ({ item }) => {
     if (item.page === 1) {
-      //   return <FirstPage item={item} />;
-      // } else if (item.page === 1) {
-      return (
-        <View style={styles.FlatListContainer}>
-          <Button
-            buttonStyle={styles.buttonStyle}
-            type="outline"
-            titleStyle={styles.buttonTitleStyle}
-            title="Horas que"
-            onPress={() => {
-              setIndex(2);
-            }}
-          />
-          <Button
-            buttonStyle={styles.buttonStyle}
-            type="outline"
-            titleStyle={styles.buttonTitleStyle}
-            title="Círculos"
-            onPress={() => {
-              setIndex(6);
-            }}
-          />
-          <Button
-            buttonStyle={styles.buttonStyle}
-            type="outline"
-            titleStyle={styles.buttonTitleStyle}
-            title="Días que"
-            onPress={() => {
-              setIndex(9);
-            }}
-          />
-          <Button
-            buttonStyle={styles.buttonStyle}
-            type="outline"
-            titleStyle={styles.buttonTitleStyle}
-            title="Rombos"
-            onPress={() => {
-              setIndex(12);
-            }}
-          />
-          <Button
-            buttonStyle={styles.buttonStyle}
-            type="outline"
-            titleStyle={styles.buttonTitleStyle}
-            title="My Bookmark"
-            icon={{
-              name: "bookmark-o",
-              type: "font-awesome",
-              color: "#000",
-              paddingHorizontal: 10,
-            }}
-            onPress={() => {
-              setIndex(bookmarkedPage);
-            }}
-          ></Button>
-        </View>
-      );
+      return <IndexPage setIndex={setIndex} />;
     } else if (item.esTitulo) {
       return <TitlePageDisplay item={item} />;
     } else {

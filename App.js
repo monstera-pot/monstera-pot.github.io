@@ -10,12 +10,10 @@ import FullIndexScreen from "./screens/FullIndexScreen";
 import FavoriteCarrouselScreen from "./screens/FavoriteCarrouselScreen";
 import IndexShelf from "./screens/IndexShelf";
 import IndexedScreen from "./screens/IndexedScreen";
-
 //imports for redux
 import { Provider } from "react-redux";
 import { favoritesReducer } from "./features/favorites/favoritesSlice";
 import { store } from "./redux/store";
-//import for fonts
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import { Icon } from "react-native-elements";
@@ -46,27 +44,23 @@ const HomeNavigator = () => {
         name="Home"
         component={HomeScreen}
         options={({ navigation }) => ({
-          title: "Microdosis",
+          title: "Autoscopia",
           headerLeft: () => (
             <Icon
               name="chevron-left"
               type="font-awesome"
-              iconStyle={{
-                marginLeft: 10,
-                color: "#fff",
-                fontSize: 24,
-              }}
+              iconStyle={iconStyle}
               onPress={() => navigation.toggleDrawer()}
             />
           ),
         })}
       />
       <Stack.Screen
-        name="Microdosis"
+        name="Autoscopia"
         component={FullIndexScreen}
         screenOptions={screenOptions}
         options={({ navigation }) => ({
-          title: "Microdosis",
+          title: "Autoscopia",
           headerLeft: () => (
             <Icon
               name="chevron-left"
@@ -90,19 +84,15 @@ const FullIndexScreenNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="FullIndex" screenOptions={screenOptions}>
       <Stack.Screen
-        name="Microdosis"
+        name="Autoscopia"
         component={FullIndexScreen}
         options={({ navigation }) => ({
-          title: "Microdosis",
+          title: "Autoscopia",
           headerLeft: () => (
             <Icon
               name="chevron-left"
               type="font-awesome"
-              iconStyle={{
-                marginLeft: 10,
-                color: "#fff",
-                fontSize: 24,
-              }}
+              iconStyle={iconStyle}
               onPress={() => navigation.toggleDrawer()}
             />
           ),
@@ -178,7 +168,7 @@ const IndexNavigator = () => {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen
-        name="Índice"
+        name="Index"
         component={IndexShelf}
         options={({ navigation }) => ({
           headerLeft: () => (
@@ -251,17 +241,17 @@ export default function App() {
             <Drawer.Screen
               name="FullIndex"
               component={FullIndexScreenNavigator}
-              options={{ title: "Microdosis" }}
+              options={{ title: "Autoscopia" }}
             />
             <Drawer.Screen
               name="IndexShelf"
               component={IndexNavigator}
-              options={{ title: "Índice" }}
+              options={{ title: "Index" }}
             />
             <Drawer.Screen
               name="Favorites"
               component={FavoritesScreenNavigator}
-              options={{ title: "Favoritos" }}
+              options={{ title: "Favorites" }}
             />
             <Drawer.Screen
               name="About"

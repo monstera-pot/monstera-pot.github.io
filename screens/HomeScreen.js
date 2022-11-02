@@ -21,11 +21,11 @@ const HomeScreen = ({ navigation }) => {
         Majo Almeyra
       </Text>
       <Button
-        title="Empezar"
+        title="Get started"
         buttonStyle={styles.buttonStyle}
         type="outline"
         titleStyle={styles.buttonTitleStyle}
-        onPress={() => navigation.navigate("Microdosis")}
+        onPress={() => navigation.navigate("Autoscopia")}
       />
     </CustomCard>
   );

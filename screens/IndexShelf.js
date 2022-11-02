@@ -1,12 +1,14 @@
-import { View, FlatList, StyleSheet, Dimensions, Text } from "react-native";
-import { Icon, Button } from "react-native-elements";
+import { View, StyleSheet, Dimensions } from "react-native";
+import { Button } from "react-native-elements";
+import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 
-const IndexShelf = ({ route, navigation }) => {
+const IndexShelf = ({ route }) => {
+  const navigation = useNavigation();
   const bookmarkedPage = useSelector((state) => state.bookmarkedPoem.ids);
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#fff" }}>
+    <View style={styles.View}>
       <View style={styles.FlatListContainer}>
         <Button
           buttonStyle={styles.buttonStyle}
@@ -64,7 +66,7 @@ const IndexShelf = ({ route, navigation }) => {
             paddingHorizontal: 10,
           }}
           onPress={() => {
-            navigation.navigate("Microdosis", {
+            navigation.navigate("Autoscopia", {
               index: bookmarkedPage,
             });
           }}
@@ -75,6 +77,7 @@ const IndexShelf = ({ route, navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  View: { flex: 1, backgroundColor: "#fff" },
   FlatListContainer: {
     marginVertical: 0,
     width: Dimensions.get("window").width,

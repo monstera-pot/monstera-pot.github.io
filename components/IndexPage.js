@@ -1,6 +1,8 @@
+import { View, StyleSheet, Dimensions } from "react-native";
 import { useSelector } from "react-redux";
+import { Button } from "react-native-elements";
 
-const BookIndex = () => {
+const IndexPage = ({ setIndex }) => {
   const bookmarkedPage = useSelector((state) => state.bookmarkedPoem.ids);
 
   return (
@@ -55,7 +57,7 @@ const BookIndex = () => {
         onPress={() => {
           setIndex(bookmarkedPage);
         }}
-      ></Button>
+      />
     </View>
   );
 };
@@ -79,4 +81,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default IndexShelf;
+export default IndexPage;
